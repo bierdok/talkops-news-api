@@ -1,0 +1,13 @@
+{
+  "name": "search_news",
+  "description": "Search for news.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "keywords": {
+        "type": "string",
+        "description": "Keywords in english."
+      }
+    }
+  }
+}

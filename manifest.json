@@ -1,0 +1,15 @@
+{
+  "category": "news",
+  "demo": false,
+  "features": [
+    "Search for the news"
+  ],
+  "icon": "https://newsapi.org/apple-touch-icon.png",
+  "name": "News API",
+  "sdk": {
+    "name": "nodejs",
+    "version": "2.12.0"
+  },
+  "softwareVersion": null,
+  "website": "https://newsapi.org/"
+}
