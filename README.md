@@ -6,7 +6,7 @@ A TalkOps Extension made to work with [TalkOps](https://talkops.app).
 
 ## Features
 
-* Search for the news
+* Search for the latest news.
 
 ## Installation
 

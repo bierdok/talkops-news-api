@@ -17,7 +17,7 @@ const extension = new Extension()
   .setWebsite('https://newsapi.org/')
   .setIcon('https://newsapi.org/apple-touch-icon.png')
   .setCategory('news')
-  .setFeatures(['Search for the news'])
+  .setFeatures(['Search for the latest news.'])
   .setinstallationSteps([
     '[Register](https://newsapi.org/register) on the website.',
     'Copy the API key to setup the parameter or the environment variable \`API_KEY\`.',

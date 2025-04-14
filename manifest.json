@@ -2,7 +2,7 @@
   "category": "news",
   "demo": false,
   "features": [
-    "Search for the news"
+    "Search for the latest news."
   ],
   "icon": "https://newsapi.org/apple-touch-icon.png",
   "name": "News API",
