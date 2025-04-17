@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "axios": "^1.8.4",
-    "newsapi": "^2.4.1",
-    "talkops": "^2.12.0"
+    "talkops": "^2.13.0"
   }
 }

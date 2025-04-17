@@ -41,7 +41,7 @@ const extension = new Extension()
         const response = await axios.get(
           `https://newsapi.org/v2/everything?${searchParams.toString()}`,
         )
-        const articles = response.data.articles.slice(0, 4)
+        const articles = response.data.articles.filter((article) => article.description).slice(0, 1)
         if (articles.length > 0) {
           articles.forEach((article) => {
             const medias = [new Link(article.url)]
@@ -50,8 +50,7 @@ const extension = new Extension()
             }
             extension.sendMedias(medias)
           })
-          return response.data.articles
-            .slice(0, 4)
+          return articles
             .map((article) => {
               return article.description
             })
