@@ -4,9 +4,11 @@ import axios from 'axios'
 
 const apiKey = new Parameter('API_KEY').setDescription('The copied API key.').setType('password')
 const domains = new Parameter('DOMAINS')
+  .setDefaultValue('')
   .setDescription('A comma-seperated string of domains to restrict the search to.')
   .setPossibleValues(['bbc.co.uk', 'blog.jetbrains.com,javascriptweekly.com,stackoverflow.com'])
 const excludeDomains = new Parameter('EXCLUDE_DOMAINS')
+  .setDefaultValue('')
   .setDescription('A comma-seperated string of domains to remove from the results.')
   .setPossibleValues(['www.xataka.com', 'www.businessinsider.com,www.theverge.com'])
 
@@ -22,7 +24,7 @@ const extension = new Extension()
     '[Register](https://newsapi.org/register) on the website.',
     'Copy the API key to setup the parameter or the environment variable \`API_KEY\`.',
   ])
-  .setParameters([apiKey])
+  .setParameters([apiKey, domains, excludeDomains])
   .setInstructions(
     'You are a news anchor reporting live on a major breaking news story. Deliver the news with professionalism and clarity.',
   )
@@ -50,7 +52,7 @@ const extension = new Extension()
           })
           return articles
             .map((article) => {
-              return `Latest news (${article.publishedAt}): ${article.description}. Invite the user to open the article by clicking on the attached link.`
+              return `Latest news "${article.title}" (${article.publishedAt}): ${article.description}. After giving some informations about the article, invite the user to open the article by clicking on the attached link.`
             })
             .join('|')
         } else {
