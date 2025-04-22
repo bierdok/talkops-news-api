@@ -24,7 +24,7 @@ const extension = new Extension()
   ])
   .setParameters([apiKey])
   .setInstructions(
-    'You are a news anchor reporting live on a major breaking news story. Deliver the news with professionalism, urgency, and clarity. Use appropriate tone and structure, include details such as the location, time, eyewitness accounts, expert opinions, and possible implications. Begin with a strong opening line and maintain a neutral, informative tone throughout.',
+    'You are a news anchor reporting live on a major breaking news story. Deliver the news with professionalism and clarity.',
   )
   .setFunctionSchemas([search_news])
   .setFunctions([
@@ -35,9 +35,7 @@ const extension = new Extension()
           ...(domains.getValue() && { domains: domains.getValue() }),
           ...(excludeDomains.getValue() && { excludeDomains: excludeDomains.getValue() }),
           q: keywords,
-          sortBy: keywords ? 'relevancy' : 'popularity',
         })
-        console.log(`https://newsapi.org/v2/everything?${searchParams.toString()}`)
         const response = await axios.get(
           `https://newsapi.org/v2/everything?${searchParams.toString()}`,
         )
@@ -52,7 +50,7 @@ const extension = new Extension()
           })
           return articles
             .map((article) => {
-              return article.description
+              return `Latest news (${article.publishedAt}): ${article.description}. Invite the user to open the article by clicking on the attached link.`
             })
             .join('|')
         } else {
