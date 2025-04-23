@@ -3,16 +3,16 @@ import { URLSearchParams } from 'url'
 import axios from 'axios'
 
 const apiKey = new Parameter('API_KEY').setDescription('The copied API key.').setType('password')
+
 const domains = new Parameter('DOMAINS')
   .setDefaultValue('')
   .setDescription('A comma-seperated string of domains to restrict the search to.')
   .setPossibleValues(['bbc.co.uk', 'blog.jetbrains.com,javascriptweekly.com,stackoverflow.com'])
+
 const excludeDomains = new Parameter('EXCLUDE_DOMAINS')
   .setDefaultValue('')
   .setDescription('A comma-seperated string of domains to remove from the results.')
   .setPossibleValues(['www.xataka.com', 'www.businessinsider.com,www.theverge.com'])
-
-import search_news from './schemas/functions/search_news.json' with { type: 'json' }
 
 const extension = new Extension()
   .setName('News API')
@@ -28,7 +28,21 @@ const extension = new Extension()
   .setInstructions(
     'You are a news anchor reporting live on a major breaking news story. Deliver the news with professionalism and clarity.',
   )
-  .setFunctionSchemas([search_news])
+  .setFunctionSchemas([
+    {
+      name: 'search_news',
+      description: 'Search for news.',
+      parameters: {
+        type: 'object',
+        properties: {
+          keywords: {
+            type: 'string',
+            description: 'Keywords in english.',
+          },
+        },
+      },
+    },
+  ])
   .setFunctions([
     async function search_news(keywords) {
       try {
