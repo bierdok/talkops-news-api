@@ -77,3 +77,4 @@ const extension = new Extension()
       }
     },
   ])
+  .start()
