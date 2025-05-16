@@ -5,14 +5,14 @@ import axios from 'axios'
 const apiKey = new Parameter('API_KEY').setDescription('The copied API key.').setType('password')
 
 const domains = new Parameter('DOMAINS')
-  .setDefaultValue('')
   .setDescription('A comma-seperated string of domains to restrict the search to.')
   .setPossibleValues(['bbc.co.uk', 'blog.jetbrains.com,javascriptweekly.com,stackoverflow.com'])
+  .setOptional(true)
 
 const excludeDomains = new Parameter('EXCLUDE_DOMAINS')
-  .setDefaultValue('')
   .setDescription('A comma-seperated string of domains to remove from the results.')
   .setPossibleValues(['www.xataka.com', 'www.businessinsider.com,www.theverge.com'])
+  .setOptional(true)
 
 const extension = new Extension()
   .setName('News API')
